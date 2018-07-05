@@ -1,0 +1,10 @@
+
+samples/__pycache__/
+
+mrcnn/__pycache__/
+
+mask_rcnn_gesture_0001\.h5
+
+test\.avi
+
+env/
