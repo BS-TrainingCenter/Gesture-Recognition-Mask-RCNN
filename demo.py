@@ -1,14 +1,31 @@
+'''
+Example usage:
+
+    python demo.py \
+        --input_model=YOUR_MODEL_PATH \
+        --input_video=YOUR_VIDEO_PATH
+
+'''
+
 import cv2
 import numpy as np
 import os
 import sys
+import tensorflow as tf
+
 from samples import gesture
 from mrcnn import utils
 from mrcnn import model as modellib
 
+
+flags = tf.app.flags
+flags.DEFINE_string('input_model', 'mask_rcnn_gesture_0001.h5', 'Input model to test')
+flags.DEFINE_string('input_video', 'test.avi', 'Input video to test')
+FLAGS = flags.FLAGS
+
 ROOT_DIR = os.getcwd()
 MODEL_DIR = os.path.join(ROOT_DIR, "logs")
-GESTURE_MODEL_PATH = os.path.join(ROOT_DIR, "mask_rcnn_gesture_0001.h5")
+GESTURE_MODEL_PATH = os.path.join(ROOT_DIR, FLAGS.input_model)
 
 
 class InferenceConfig(gesture.GestureConfig):
@@ -19,13 +36,16 @@ class InferenceConfig(gesture.GestureConfig):
 config = InferenceConfig()
 config.display()
 
-model = modellib.MaskRCNN(
-    mode="inference", model_dir=MODEL_DIR, config=config
-)
-model.load_weights(GESTURE_MODEL_PATH, by_name=True)
-class_names = [
-    'BG', 'flip', 'flop'
-]
+model = modellib.MaskRCNN(mode="inference",
+                          model_dir=MODEL_DIR,
+                          config=config
+                          )
+model.load_weights(GESTURE_MODEL_PATH,
+                   by_name=True)
+class_names = ['BG',
+               'flip',
+               'flop'
+               ]
 
 
 def random_colors(N):
@@ -35,9 +55,7 @@ def random_colors(N):
 
 
 colors = random_colors(len(class_names))
-class_dict = {
-    name: color for name, color in zip(class_names, colors)
-}
+class_dict = {name: color for name, color in zip(class_names, colors)}
 
 
 def apply_mask(image, mask, color, alpha=0.5):
@@ -88,8 +106,7 @@ if __name__ == '__main__':
         test everything
     """
 
-    input_video = sys.argv[1]
-    capture = cv2.VideoCapture(input_video)
+    capture = cv2.VideoCapture(FLAGS.input_video)
 
     # these 2 lines can be removed if you dont have a 1080p camera.
     # capture.set(cv2.CAP_PROP_FRAME_WIDTH, 1920)

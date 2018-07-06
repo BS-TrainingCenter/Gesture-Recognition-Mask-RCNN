@@ -23,6 +23,7 @@ $ pip install -r requirements.txt
 
 Run Demo
 ```bash
-$ python detector_demo.py {YOUR_TEST_VIDEO}
+$ python demo.py \
+    --input_model=YOUR_MODEL_PATH \
+    --input_video=YOUR_VIDEO_PATH
 ```
-

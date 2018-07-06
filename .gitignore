@@ -8,3 +8,5 @@ mask_rcnn_gesture_0001\.h5
 test\.avi
 
 env/
+
+\.idea/
