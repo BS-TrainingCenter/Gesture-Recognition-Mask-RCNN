@@ -27,3 +27,10 @@ $ python demo.py \
     --input_model=YOUR_MODEL_PATH \
     --input_video=YOUR_VIDEO_PATH
 ```
+
+
+Training data Download Link
+
+https://drive.google.com/open?id=1g-E1VEMBgDblF7U-ME0dcTfdEE7q96PK
+
+Path : .../Gesture-Recognition-Mask-RCNN/
