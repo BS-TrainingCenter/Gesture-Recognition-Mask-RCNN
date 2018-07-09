@@ -21,16 +21,14 @@ Install Dependencies
 $ pip install -r requirements.txt
 ```
 
+Download pre-trained Gesture weights (mask_rcnn_gesture_0001.h5) from the [Google Drive](https://drive.google.com/open?id=1g-E1VEMBgDblF7U-ME0dcTfdEE7q96PK).
+
 Run Demo
 ```bash
 $ python demo.py \
     --input_model=YOUR_MODEL_PATH \
     --input_video=YOUR_VIDEO_PATH
 ```
-
-
-## Training data Download Link
-
-https://drive.google.com/open?id=1g-E1VEMBgDblF7U-ME0dcTfdEE7q96PK
-
-Path : .../Gesture-Recognition-Mask-RCNN/
+<div align='center'>
+  <img src='img/demo.gif' width='550px'>
+</div>
